@@ -9,11 +9,11 @@ import java.util.Date;
 @Setter
 
 public class entry {
-    int entryID;
-    String content;
-    boolean visibility;
-    int userID;
-    Date date;
+    private int entryID;
+    private String content;
+    private boolean visibility;
+    private int userID;
+    private Date date;
 
     public entry(){}
 

@@ -7,13 +7,13 @@ import lombok.Setter;
 @Setter
 
 public class user {
-    int userID;
-    String username;
-    String password;
-    String firstName;
-    String lastName;
-    boolean admin;
-    String email;
+    private int userID;
+    private String username;
+    private String password;
+    private String firstName;
+    private String lastName;
+    private boolean admin;
+    private String email;
 
     public user(
             //constructor

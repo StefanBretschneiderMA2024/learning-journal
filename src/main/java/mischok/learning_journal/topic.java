@@ -6,8 +6,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class topic {
-    int topicID;
-    String name;
-    int classID;
+    private int topicID;
+    private String name;
+    private int classID;
 
 }
