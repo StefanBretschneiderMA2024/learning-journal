@@ -1,5 +1,11 @@
 package mischok.learning_journal;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+
 public class user {
     int userID;
     String username;
@@ -10,6 +16,7 @@ public class user {
     String email;
 
     public user(
+            //constructor
             String username,
             String password,
             String firstName,
