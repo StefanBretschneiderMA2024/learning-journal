@@ -1,6 +1,6 @@
 package mischok.learning_journal;
 
-public class utility {
+public class Utility {
 
     public void readTable (String table){}
     public void editObject (String table){}
