@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Journal Eintrag erstellen</title>
+  <style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .container {
+        width: 80%;
+        max-width: 900px;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        padding: 20px;
+    }
+    h1 {
+        text-align: center;
+        font-size: 2rem;
+        color: #333;
+        margin-bottom: 20px;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+    label {
+        font-size: 1.1rem;
+        color: #555;
+        margin-bottom: 8px;
+    }
+    input[type="text"], textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+        background-color: #fafafa;
+        box-sizing: border-box;
+    }
+    textarea {
+        height: 200px;
+        resize: none;
+    }
+    button {
+        padding: 12px;
+        background-color: #3498db;
+        color: #fff;
+        font-size: 1rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    button:hover {
+        background-color: #2980b9;
+    }
+    .manage-button {
+        margin-top: 20px;
+        text-align: center;
+    }
+    .manage-button a {
+        text-decoration: none;
+        color: #fff;
+        background-color: #3498db;
+        padding: 10px 20px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+    .manage-button a:hover {
+        background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Neuen Journal Eintrag erstellen</h1>
+
+  <!-- Eintrag erstellen -->
+  <form method="POST" action="/entries/add">
+    <label for="subject">Thema:</label>
+    <input type="text" id="subject" name="subject" placeholder="Gib das Thema ein..." required>
+
+    <label for="content">Inhalt:</label>
+    <textarea id="content" name="content" placeholder="Schreibe deinen Blogeintrag hier..." required></textarea>
+
+    <button type="submit">Eintrag erstellen</button>
+  </form>
+
+  <!-- Ein Button zum Verwalten von Einträgen -->
+  <div class="manage-button">
+    <a href="/manage-entries.html">Einträge verwalten</a>
+  </div>
+</div>
+
+</body>
+</html>

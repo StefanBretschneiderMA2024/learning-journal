@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Einträge anzeigen</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        button {
+            padding: 8px 12px;
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #c0392b;
+        }
+        .delete-confirm {
+            margin-top: 20px;
+        }
+        .delete-confirm input {
+            padding: 8px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Meine Einträge</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Thema</th>
+            <th>Datum</th>
+            <th>Verfasser</th>
+            <th>Aktionen</th>
+        </tr>
+        </thead>
+        <tbody id="entriesTableBody">
+        <!-- Dynamisch generierte Einträge werden hier eingefügt -->
+        </tbody>
+    </table>
+</div>
+
+<div class="delete-confirm" id="deleteConfirm" style="display: none;">
+    <h2>Eintrag löschen</h2>
+    <p>Bitte tippe "Löschen" ein, um den Eintrag zu löschen:</p>
+    <input type="text" id="deleteInput" placeholder="Löschen" />
+    <button id="confirmDelete">Bestätigen</button>
+</div>
+
+<script>
+    const entriesTableBody = document.getElementById('entriesTableBody');
+
+    // Einträge in die Tabelle einfügen
+    entries.forEach(entry => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${entry.thema}</td>
+        <td>${entry.datum}</td>
+        <td>${entry.verfasser}</td>
+        <td><button onclick="showDeleteConfirm(${entry.id})">Löschen</button></td>
+      `;
+      entriesTableBody.appendChild(row);
+    });
+
+    let entryToDelete = null;
+
+    function showDeleteConfirm(entryId) {
+      entryToDelete = entryId;
+      document.getElementById('deleteConfirm').style.display = 'block';
+    }
+
+    document.getElementById('confirmDelete').addEventListener('click', function() {
+      const input = document.getElementById('deleteInput').value;
+      if (input === 'Löschen') {
+        // Hier die Logik zum Löschen des Eintrags aufrufen
+        alert(`Eintrag mit ID ${entryToDelete} wurde gelöscht!`);
+        // Nach dem Löschen den Eintrag aus der Tabelle entfernen
+        // (In der echten Anwendung würde dies mit einer API-Anfrage erfolgen)
+        entriesTableBody.innerHTML = ''; // Leeren für Beispiel
+        entryToDelete = null;
+        document.getElementById('deleteConfirm').style.display = 'none';
+      } else {
+        alert('Bitte tippe "Löschen", um den Eintrag zu bestätigen.');
+      }
+    });
+</script>
+
+</body>
+</html>

@@ -1,11 +1,13 @@
-package mischok.learning_journal;
+package mischok.learning_journal.Entry;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -13,19 +15,22 @@ import java.util.Date;
 @Entity
 public class Entry {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private int entryID;
     private String content;
-    private boolean visibility;
     private int userID;
-    private Date date;
+    private LocalDate date;
+    private String subject;
 
     public Entry(){}
 
-    public Entry(int entryID, String content, boolean visibility, Date date, int userID) {
+    public Entry(int entryID, String subject, String content, LocalDate date, int userID) {
         this.entryID = entryID;
+        this.subject = subject;
         this.content = content;
-        this.visibility = visibility;
         this.date = date;
         this.userID = userID;
+
     }
 }
