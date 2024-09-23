@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Edit SClass</title>
+</head>
+<body>
+<h1>Edit SClass</h1>
+
+<form action="#" th:action="@{/sclasses/update/{classID}(classID=${sclass.classID})}" th:object="${sclass}" method="post">
+  <label for="name">Class Name:</label>
+  <input type="text" id="name" th:field="*{name}" placeholder="Enter class name" required />
+  <br />
+
+  <label for="assignDate">Assign Date:</label>
+  <input type="date" id="assignDate" th:field="*{assignDate}" th:value="*{assignDate}" required />
+  <br />
+
+  <button type="submit">Update SClass</button>
+</form>
+
+<br />
+<a th:href="@{/sclasses}">Back to SClass List</a>
+</body>
+</html>

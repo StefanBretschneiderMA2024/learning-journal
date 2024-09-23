@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>List of SClasses</title>
+</head>
+<body>
+<h1>SClass List</h1>
+
+<table border="1">
+  <thead>
+  <tr>
+    <th>Class ID</th>
+    <th>Name</th>
+    <th>Assign Date</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="sclass : ${sclasses}">
+    <td th:text="${sclass.classID}">Class ID</td>
+    <td th:text="${sclass.name}">Name</td>
+    <td th:text="${sclass.assignDate.format(T(java.time.format.DateTimeFormatter).ofPattern('yyyy-MM-dd'))}">Assign Date</td>
+
+    <td>
+      <a th:href="@{/sclasses/edit/{classID}(classID=${sclass.classID})}">Edit</a> |
+      <a th:href="@{/sclasses/delete/{classID}(classID=${sclass.classID})}">Delete</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<br />
+<a th:href="@{/sclasses/new}">Create New SClass</a>
+</body>
+</html>
