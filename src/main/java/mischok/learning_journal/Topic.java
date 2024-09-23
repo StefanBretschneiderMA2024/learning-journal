@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 
 @Entity
-public class Topic {
+public class  Topic {
     @Id
     private int topicID;
     private String name;

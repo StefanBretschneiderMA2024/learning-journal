@@ -27,7 +27,6 @@ public class StudyClass {
         this.name = name;
         this.assignDate = assignDate;
     }
-
     public StudyClass() {
     }
 
