@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -28,4 +29,25 @@ public class AddUsserControler {
         model.addAttribute("users",addUserRepository.findAll());
         return "Userliste";
     }
+    @GetMapping("/editUser/{id}")
+    public String showUpdateForm(@PathVariable("id") long id, Model model) {
+        AddUser user = addUserRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+        model.addAttribute("user", user);
+        return "updateUser";
     }
+
+    @GetMapping("/updateUser/{id}")
+    public String UpdateUser(@PathVariable("id")long id,@ModelAttribute AddUser user,Model model ){
+        user.setId(id);
+        addUserRepository.save(user);
+        return  "redirect:/users";
+    }
+    @GetMapping("/deleteUser/{id}")
+    public String deleteUser(@PathVariable("id") long id, Model model) {
+        AddUser user = addUserRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+        addUserRepository.delete(user);
+        return "redirect:/users";
+    }
+}
