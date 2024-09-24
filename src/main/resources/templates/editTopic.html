@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Edit Topic</title>
+</head>
+<body>
+<h1>Edit Topic</h1>
+<form action="#" th:action="@{/topics/update/{topicID}(topicID=${topic.topicID})}" th:object="${topic}" method="post">
+  <label for="name">Name:</label>
+  <input type="text" id="name" th:field="*{name}" required />
+  <br />
+
+  <label for="classID">Class ID:</label>
+  <input type="number" id="classID" th:field="*{classID}" required />
+  <br />
+
+  <button type="submit">Update Topic</button>
+</form>
+
+<br />
+<a th:href="@{/topics}">Back to Topic List</a>
+</body>
+</html>
