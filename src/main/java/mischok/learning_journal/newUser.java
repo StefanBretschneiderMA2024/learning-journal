@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 
 @Entity
-public class User {
+public class newUser {
     @Id
     private int userID;
     private String username;
@@ -19,7 +19,7 @@ public class User {
     private boolean admin;
     private String email;
 
-    public User(String email, boolean admin, String firstName, String lastName, String password, String username, int userID) {
+    public newUser(String email, boolean admin, String firstName, String lastName, String password, String username, int userID) {
         this.email = email;
         this.admin = admin;
         this.firstName = firstName;
@@ -31,6 +31,6 @@ public class User {
 
 
 
-    public User() {
+    public newUser() {
     }
 }

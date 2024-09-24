@@ -1,7 +1,6 @@
 package mischok.learning_journal.Entry;
 
-import mischok.learning_journal.AddUser.AddUser;
-import mischok.learning_journal.User;
+import mischok.learning_journal.newUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.ui.Model;
@@ -14,8 +13,14 @@ import java.util.List;
 @RequestMapping("/entries")
 public class EntryController {
 
+
     @Autowired
     private EntryRepository entryRepository;
+
+    @GetMapping("/")
+    public String home() {
+        return "index";
+    }
 
     @GetMapping("/entry")
     public String entry(Model model) {
@@ -23,8 +28,8 @@ public class EntryController {
         return "entry";
     }
     @PostMapping("/add")
-    public String addEntry(@ModelAttribute Entry entry, @AuthenticationPrincipal User user) {
-        entry.setUserID(user.getUserID()); // Benutzer-ID des eingeloggten Nutzers setzen
+    public String addEntry(@ModelAttribute Entry entry, @AuthenticationPrincipal newUser newUser) {
+        entry.setUserID(newUser.getUserID()); // Benutzer-ID des eingeloggten Nutzers setzen
         entry.setDate(LocalDate.now()); // Datum auf das aktuelle Datum setzen
         entryRepository.save(entry);
         return "redirect:/entries";
