@@ -9,16 +9,16 @@ import lombok.Setter;
 @Setter
 
 @Entity
-public class  Topic {
+public class OldTopic {
     @Id
     private int topicID;
     private String name;
     private int classID;
 
-    public Topic() {
+    public OldTopic() {
     }
 
-    public Topic(int topicID, String name, int classID) {
+    public OldTopic(int topicID, String name, int classID) {
         this.topicID = topicID;
         this.name = name;
         this.classID = classID;

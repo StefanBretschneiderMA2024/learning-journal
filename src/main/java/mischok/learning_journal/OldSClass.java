@@ -11,23 +11,23 @@ import java.util.Date;
 @Setter
 
 @Entity
-public class StudyClass {
+public class OldSClass {
     @Id
     private int classID;
     private String name;
     private Date assignDate;
     //variable added to enable admin to change assign date for topic
 
-    public StudyClass(String name){
+    public OldSClass(String name){
 
     }
 
-    public StudyClass(int classID, String name, Date assignDate) {
+    public OldSClass(int classID, String name, Date assignDate) {
         this.classID = classID;
         this.name = name;
         this.assignDate = assignDate;
     }
-    public StudyClass() {
+    public OldSClass() {
     }
 
     public void enterClass(){
