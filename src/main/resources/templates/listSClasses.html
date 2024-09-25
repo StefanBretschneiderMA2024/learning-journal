@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Liste der Klassen</title>
+</head>
+<body>
+<h1>Liste der Klassen</h1>
+
+<table border="1">
+  <thead>
+  <tr>
+    <th>Klassen ID</th>
+    <th>Name</th>
+    <th>Themenzuweisung</th>
+    <th>Aktionen</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="sclass : ${sclasses}">
+    <td th:text="${sclass.classID}">Klassen ID</td>
+    <td th:text="${sclass.name}">Name</td>
+    <td th:text="${sclass.assignDate.format(T(java.time.format.DateTimeFormatter).ofPattern('yyyy-MM-dd'))}">Themenzuweisung</td>
+
+    <td>
+      <a th:href="@{/sclasses/edit/{classID}(classID=${sclass.classID})}">bearbeiten</a> |
+      <a th:href="@{/sclasses/delete/{classID}(classID=${sclass.classID})}">löschen</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<br />
+<a th:href="@{/sclasses/new}">neue Klasse erstellen</a>
+</body>
+</html>

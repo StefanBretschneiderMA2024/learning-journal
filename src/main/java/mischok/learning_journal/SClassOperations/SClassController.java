@@ -3,6 +3,7 @@ package mischok.learning_journal.SClassOperations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.format.DateTimeFormatter;
@@ -15,6 +16,8 @@ public class SClassController {
     @Autowired
     private SClassRepository sClassRepository;
 
+
+
     // create
     @GetMapping("/sclasses/new")
     public String showCreateSClassForm(Model model) {
@@ -24,7 +27,10 @@ public class SClassController {
 
     // create
     @PostMapping("/sclasses")
-    public String createSClass(@ModelAttribute SClass sClass) {
+    public String createSClass(@ModelAttribute("sclass") SClass sClass, BindingResult result) {
+        if (result.hasErrors()) {
+            return "createSClass"; // If there are errors, return back to the form
+        }
         sClassRepository.save(sClass);
         return "redirect:/sclasses";  // idk
     }
