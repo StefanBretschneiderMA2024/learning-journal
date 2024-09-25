@@ -18,6 +18,7 @@ public class Entry {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private int entryID;
+    private String title;
     private String content;
     private int userID;
     private LocalDate date;
