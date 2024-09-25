@@ -1,23 +1,103 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Themenerstellung</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 80%;
+            max-width: 600px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        label {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 8px;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            background-color: #fafafa;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 12px;
+            background-color: #3498db;
+            color: #fff;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            margin-bottom: 10px; /* Added margin for spacing */
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .manage-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+        .manage-buttons a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #3498db;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            width: 48%; /* To allow space for both buttons */
+            text-align: center; /* Center align text in button */
+            display: inline-block; /* Make it behave like a button */
+        }
+        .manage-buttons a:hover {
+            background-color: #2980b9;
+        }
+    </style>
 </head>
 <body>
-<h1>Thema erstellen</h1>
-<form action="#" th:action="@{/topics}" th:object="${topic}" method="post">
-    <label for="name">Name:</label>
-    <input type="text" id="name" th:field="*{name}" required />
-    <br />
 
-    <label for="classID">Klassen ID:</label>
-    <input type="number" id="classID" th:field="*{classID}" required />
-    <br />
+<div class="container">
+    <h1>Thema erstellen</h1>
+    <form action="#" th:action="@{/topics}" th:object="${topic}" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" th:field="*{name}" required />
 
-    <button type="submit">Thema erstellen</button>
-</form>
+        <label for="classID">Klassen ID:</label>
+        <input type="number" id="classID" th:field="*{classID}" required />
 
-<br />
-<a th:href="@{/topics}">Themenliste</a>
+        <button type="submit">Thema erstellen</button>
+    </form>
+
+    <div class="manage-buttons">
+        <a th:href="@{/topics}">Themenliste</a>
+        <a th:href="@{/}">Zurück zur Hauptseite</a>
+    </div>
+</div>
+
 </body>
 </html>

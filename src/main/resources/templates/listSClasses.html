@@ -1,35 +1,98 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Liste der Klassen</title>
+  <style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .container {
+        width: 80%;
+        max-width: 900px;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        padding: 20px;
+    }
+    h1 {
+        text-align: center;
+        font-size: 2rem;
+        color: #333;
+        margin-bottom: 20px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    th {
+        background-color: #3498db;
+        color: white;
+    }
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+    .manage-button {
+        text-align: center;
+    }
+    .manage-button a {
+        text-decoration: none;
+        color: #fff;
+        background-color: #3498db;
+        padding: 10px 20px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+    .manage-button a:hover {
+        background-color: #2980b9;
+    }
+  </style>
 </head>
 <body>
-<h1>Liste der Klassen</h1>
 
-<table border="1">
-  <thead>
-  <tr>
-    <th>Klassen ID</th>
-    <th>Name</th>
-    <th>Themenzuweisung</th>
-    <th>Aktionen</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr th:each="sclass : ${sclasses}">
-    <td th:text="${sclass.classID}">Klassen ID</td>
-    <td th:text="${sclass.name}">Name</td>
-    <td th:text="${sclass.assignDate.format(T(java.time.format.DateTimeFormatter).ofPattern('yyyy-MM-dd'))}">Themenzuweisung</td>
+<div class="container">
+  <h1>Liste der Klassen</h1>
 
-    <td>
-      <a th:href="@{/sclasses/edit/{classID}(classID=${sclass.classID})}">bearbeiten</a> |
-      <a th:href="@{/sclasses/delete/{classID}(classID=${sclass.classID})}">löschen</a>
-    </td>
-  </tr>
-  </tbody>
-</table>
+  <table>
+    <thead>
+    <tr>
+      <th>Klassen ID</th>
+      <th>Name</th>
+      <th>Themenzuweisung</th>
+      <th>Aktionen</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="sclass : ${sclasses}">
+      <td th:text="${sclass.classID}">Klassen ID</td>
+      <td th:text="${sclass.name}">Name</td>
+      <td th:text="${sclass.assignDate.format(T(java.time.format.DateTimeFormatter).ofPattern('yyyy-MM-dd'))}">Themenzuweisung</td>
+      <td>
+        <a th:href="@{/sclasses/edit/{classID}(classID=${sclass.classID})}">bearbeiten</a> |
+        <a th:href="@{/sclasses/delete/{classID}(classID=${sclass.classID})}">löschen</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
 
-<br />
-<a th:href="@{/sclasses/new}">neue Klasse erstellen</a>
+  <div class="manage-button">
+    <a th:href="@{/sclasses/new}">neue Klasse erstellen</a>
+  </div>
+</div>
+
 </body>
 </html>
