@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -73,8 +73,18 @@
             <th>Aktionen</th>
         </tr>
         </thead>
-        <tbody id="entriesTableBody">
-        <!-- Dynamisch generierte Einträge werden hier eingefügt -->
+        <tbody>
+        <!-- Dynamically generated entries -->
+        <tr th:each="entry : ${entries}">
+            <td th:text="${entry.title}"></td> <!-- Assuming "title" is the field name -->
+            <td th:text="${entry.date}"></td> <!-- Date is automatically set to LocalDate -->
+            <td th:text="${entry.userID}"></td> <!-- Assuming userID is used to track the author -->
+            <td>
+                <a th:href="@{/entries/delete/{id}(id=${entry.entryID})}" onclick="return confirm('Möchten Sie diesen Eintrag wirklich löschen?')">
+                    <button>Löschen</button>
+                </a>
+            </td>
+        </tr>
         </tbody>
     </table>
 </div>
@@ -85,44 +95,6 @@
     <input type="text" id="deleteInput" placeholder="Löschen" />
     <button id="confirmDelete">Bestätigen</button>
 </div>
-
-<script>
-    const entriesTableBody = document.getElementById('entriesTableBody');
-
-    // Einträge in die Tabelle einfügen
-    entries.forEach(entry => {
-      const row = document.createElement('tr');
-      row.innerHTML = `
-        <td>${entry.thema}</td>
-        <td>${entry.datum}</td>
-        <td>${entry.verfasser}</td>
-        <td><button onclick="showDeleteConfirm(${entry.id})">Löschen</button></td>
-      `;
-      entriesTableBody.appendChild(row);
-    });
-
-    let entryToDelete = null;
-
-    function showDeleteConfirm(entryId) {
-      entryToDelete = entryId;
-      document.getElementById('deleteConfirm').style.display = 'block';
-    }
-
-    document.getElementById('confirmDelete').addEventListener('click', function() {
-      const input = document.getElementById('deleteInput').value;
-      if (input === 'Löschen') {
-        // Hier die Logik zum Löschen des Eintrags aufrufen
-        alert(`Eintrag mit ID ${entryToDelete} wurde gelöscht!`);
-        // Nach dem Löschen den Eintrag aus der Tabelle entfernen
-        // (In der echten Anwendung würde dies mit einer API-Anfrage erfolgen)
-        entriesTableBody.innerHTML = ''; // Leeren für Beispiel
-        entryToDelete = null;
-        document.getElementById('deleteConfirm').style.display = 'none';
-      } else {
-        alert('Bitte tippe "Löschen", um den Eintrag zu bestätigen.');
-      }
-    });
-</script>
 
 </body>
 </html>
