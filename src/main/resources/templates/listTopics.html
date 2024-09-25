@@ -1,33 +1,106 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Themenliste</title>
+  <style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+    }
+    .container {
+        width: 80%;
+        max-width: 900px;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 20px;
+    }
+    h1 {
+        text-align: center;
+        font-size: 2rem;
+        color: #333;
+        margin-bottom: 20px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+    }
+    th {
+        background-color: #3498db;
+        color: white;
+    }
+    td {
+        background-color: #fafafa;
+    }
+    a {
+        color: #3498db;
+        text-decoration: none;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+    .manage-buttons {
+        display: flex;
+        justify-content: space-between;
+    }
+    .manage-buttons a {
+        background-color: #3498db;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+    .manage-buttons a:hover {
+        background-color: #2980b9;
+    }
+  </style>
 </head>
 <body>
-<h1>Themenliste</h1>
-<table border="1">
-  <thead>
-  <tr>
-    <th>Themen ID</th>
-    <th>Name</th>
-    <th>Klassen ID</th>
-    <th>Aktionen</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr th:each="topic : ${topics}">
-    <td th:text="${topic.topicID}">Themen ID</td>
-    <td th:text="${topic.name}">Name</td>
-    <td th:text="${topic.classID}">Klassen ID</td>
-    <td>
-      <a th:href="@{/topics/edit/{topicID}(topicID=${topic.topicID})}">bearbeiten</a> |
-      <a th:href="@{/topics/delete/{topicID}(topicID=${topic.topicID})}">löschen</a>
-    </td>
-  </tr>
-  </tbody>
-</table>
 
-<br />
-<a th:href="@{/topics/new}">neues Thema erstellen</a>
+<div class="container">
+  <h1>Themenliste</h1>
+  <table>
+    <thead>
+    <tr>
+      <th>Themen ID</th>
+      <th>Name</th>
+      <th>Klassen ID</th>
+      <th>Aktionen</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="topic : ${topics}">
+      <td th:text="${topic.topicID}">Themen ID</td>
+      <td th:text="${topic.name}">Name</td>
+      <td th:text="${topic.classID}">Klassen ID</td>
+      <td>
+        <a th:href="@{/topics/edit/{topicID}(topicID=${topic.topicID})}">bearbeiten</a> |
+        <a th:href="@{/topics/delete/{topicID}(topicID=${topic.topicID})}">löschen</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="manage-buttons">
+    <a th:href="@{/topics/new}">Neues Thema erstellen</a>
+    <a th:href="@{/}">Zurück zur Hauptseite</a>
+  </div>
+</div>
+
 </body>
 </html>

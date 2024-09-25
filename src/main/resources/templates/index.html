@@ -1,19 +1,62 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      lang="de">
+<html xmlns:th="http://www.thymeleaf.org" lang="de">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hauptseite</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: auto;
+        }
+        .container {
+            width: 80%;
+            max-width: 900px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 1.5rem;
+            text-align: center;
+            margin: 15px 0;
+        }
+        a {
+            text-decoration: none;
+            color: #3498db;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #2980b9;
+        }
+    </style>
 </head>
 <body>
-<h1>Learning Journal</h1>
 
-<h2><a th:href="@{/add-entry}">Journal Einträge Verwaltung</a></h2>
-<h2><a th:href="@{/addUser}">Account Verwaltung</a></h2>
-<h2><a th:href="@{/sclasses}">Klassenverwaltung</a></h2>
-<h2><a th:href="@{/topics}">Themenverwaltung</a></h2>
-<h2><a th:href="@{/userListe}">Benutzer Liste</a></h2>
-<h2><a th:href="@{/updateUser}">Profil bearbeiten</a></h2>
+<div class="container">
+    <h1>Learning Journal</h1>
+
+    <h2><a th:href="@{/add-entry}">Journal Einträge Verwaltung</a></h2>
+    <h2><a th:href="@{/users}">Account Verwaltung</a></h2>
+    <h2><a th:href="@{/sclasses}">Klassenverwaltung</a></h2>
+    <h2><a th:href="@{/topics}">Themenverwaltung</a></h2>
+    <h2><a th:href="@{/userListe}">Benutzer Liste</a></h2>
+    <h2><a th:href="@{/updateUser}">Profil bearbeiten</a></h2>
+</div>
 
 </body>
 </html>
