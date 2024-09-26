@@ -90,8 +90,8 @@
       <td th:text="${user.username}"></td>
       <td th:text="${user.admin}"></td>
       <td>
-        <a th:href="@{/editUser/{id}(id=${user.id})}">Edit</a>
-        <a th:href="@{/deleteUser/{id}(id=${user.id})}" onclick="return confirm('Are you sure?')">Delete</a>
+        <a th:href="@{/editUser/{id}(id=${user.id})}">bearbeiten</a> |
+        <a th:href="@{/deleteUser/{id}(id=${user.id})}" onclick="return confirm('Bist du sicher ?')">löschen</a>
       </td>
     </tr>
     </tbody>
