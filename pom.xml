@@ -76,7 +76,10 @@
 			<version>6.3.3</version>
 		</dependency>
 
-		</dependencies>
+
+
+
+	</dependencies>
 
 	<build>
 		<plugins>

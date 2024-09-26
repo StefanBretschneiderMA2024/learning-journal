@@ -58,6 +58,28 @@
             padding: 8px;
             margin-right: 10px;
         }
+        /* Styles for navigation and action buttons */
+        .nav-buttons, .manage-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .nav-buttons a, .manage-buttons a {
+            text-decoration: none;
+        }
+        .nav-buttons .btn, .manage-buttons .btn {
+            padding: 10px 15px;
+            background-color: #3498db; /* Same style as other buttons */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .nav-buttons .btn:hover, .manage-buttons .btn:hover {
+            background-color: #2980b9; /* Slightly darker blue on hover */
+        }
     </style>
 </head>
 <body>
@@ -87,6 +109,12 @@
         </tr>
         </tbody>
     </table>
+
+    <!-- Manage buttons (new class and back to main menu) -->
+    <div class="manage-buttons">
+        <a th:href="@{/entries/new}" class="btn">Neuen Eintrag erstellen</a>
+        <a th:href="@{/}" class="btn">Zurück zur Hauptseite</a>
+    </div>
 </div>
 
 <div class="delete-confirm" id="deleteConfirm" style="display: none;">
@@ -101,4 +129,3 @@
 </div>
 
 </body>
-</html>
