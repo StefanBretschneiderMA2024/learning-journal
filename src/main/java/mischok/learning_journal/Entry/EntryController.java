@@ -1,5 +1,6 @@
 package mischok.learning_journal.Entry;
 
+import mischok.learning_journal.Users.Users;
 import mischok.learning_journal.newUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -33,8 +34,8 @@ public class EntryController {
 
     // Handle the submission of a new entry
     @PostMapping("/add")
-    public String addEntry(@ModelAttribute Entry entry, @AuthenticationPrincipal newUser newUser) {
-        entry.setUserID(newUser.getUserID()); // Set the user ID of the logged-in user
+    public String addEntry(@ModelAttribute Entry entry, @AuthenticationPrincipal Users user) {
+        entry.setUserID(Math.toIntExact(user.getId())); // Set the user ID of the logged-in user
         entry.setDate(LocalDate.now()); // Set the current date
         entryRepository.save(entry);
         return "redirect:/entries";  // Redirect to the list of entries after saving
