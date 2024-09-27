@@ -13,7 +13,6 @@ public class IndexController {
     public String showAddEntryPage() {
         return "add-entry"; // Thymeleaf template add-entry.html in /resources/templates/
     }
-
     @GetMapping("/addUser")
     public String showAddUserPage() {
         return "addUser"; // Thymeleaf template addUser.html in /resources/templates/
@@ -32,5 +31,10 @@ public class IndexController {
     @GetMapping("/updateUser")
     public String showUpdateUserPage() {
         return "updateUser"; // Thymeleaf template updateUser.html
+    }
+
+    @GetMapping("/admin-management")
+    public String showAdminManagement() {
+        return "admin-management"; // Thymeleaf template admin-management.html
     }
 }
